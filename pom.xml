@@ -48,6 +48,7 @@
 		<module>maven-carbon-ui-plugin</module>
 		<module>carbon-p2-plugin</module>
 		<module>maven-car-plugin</module>
+		<module>maven-uuf-plugin</module>
 	</modules>
 	<build>
 		<extensions>
