@@ -228,24 +228,17 @@ public class ApplicationUUFMojo extends AbstractUUFMojo {
         }
 
         private String removeAppName(String relativePath){
-            int thirdSlash = indexOfNthElement(relativePath, File.separator, 3);
+            int thirdSlash = indexOfNthOccurrence(relativePath, File.separator, 3);
             return relativePath.substring(thirdSlash + 1);
         }
 
-        private int indexOfNthElement(String source, String target, int count) {
-            if (target.length() != 1) {
-                throw new IllegalArgumentException("Target String should be only one character!");
+        private int indexOfNthOccurrence(String str, String toFind, int occurrence) {
+            int index = str.indexOf(toFind);
+            int found = 0;
+            while (++found < occurrence && index > 0) {
+                index = str.indexOf(toFind, index + 1);
             }
-            char targetChar = target.charAt(0);
-            for (int i = 0; i < source.length(); i++) {
-                if (source.charAt(i) == targetChar) {
-                    count--;
-                    if (count == 0) {
-                        return i;
-                    }
-                }
-            }
-            return -1;
+            return index;
         }
 
         private Log getLog() {
