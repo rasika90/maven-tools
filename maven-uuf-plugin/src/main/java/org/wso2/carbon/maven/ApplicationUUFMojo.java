@@ -105,7 +105,8 @@ public class ApplicationUUFMojo extends AbstractUUFMojo {
                 version(dependencyPluginVersion)),
                 goal("tree"),
                 configuration(
-                    element(name("outputFile"), getUUFTempDirectory().resolve("dependency.tree").toString())),
+                        element(name("verbose"), "true"),
+                        element(name("outputFile"), getUUFTempDirectory().resolve("dependency.tree").toString())),
                 executionEnvironment(getProject(), getMavenSession(), getPluginManager()));
     }
 
