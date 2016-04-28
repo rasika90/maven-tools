@@ -100,13 +100,12 @@ public class ApplicationUUFMojo extends AbstractUUFMojo {
     }
 
     private void createDependencyConfig() throws MojoExecutionException {
-        //dependency-plugin does not respect to "element(name("verbose"), "true")" configuration
-        System.setProperty("verbose", "true");
         executeMojo(
                 plugin(groupId("org.apache.maven.plugins"), artifactId("maven-dependency-plugin"),
                 version(dependencyPluginVersion)),
                 goal("tree"),
                 configuration(
+                        element(name("verbose"), "true"),
                         element(name("outputFile"), getUUFTempDirectory().resolve("dependency.tree").toString())),
                 executionEnvironment(getProject(), getMavenSession(), getPluginManager()));
     }
